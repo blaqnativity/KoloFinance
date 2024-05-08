@@ -26,6 +26,7 @@ useHead({
 <style>
 body {
   font-family: "Inter";
+  scroll-behavior: smooth;
 }
 
 body {
