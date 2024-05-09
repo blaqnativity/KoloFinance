@@ -34,7 +34,10 @@ const fetchTransactions = async () => {
   isLoading.value = true;
   try {
     const { data } = await useAsyncData("transactions", async () => {
-      const { data, error } = await supabase.from("transactions").select();
+      const { data, error } = await supabase
+        .from("transactions")
+        .select()
+        .order("created_at", { ascending: false });
 
       if (error) return [];
 
@@ -46,8 +49,9 @@ const fetchTransactions = async () => {
   }
 };
 
-const refreshTransactions = async () =>
-  (transactions.value = await fetchTransactions());
+const refreshTransactions = async () => {
+  transactions.value = await fetchTransactions();
+};
 
 await refreshTransactions();
 
@@ -70,7 +74,7 @@ const transactionsGroupedByDate = computed(() => {
 
 <template>
   <section class="flex items-center justify-between mb-10">
-    <h1 class="text-4xl font-extrabold">Summary</h1>
+    <h1 class="text-3xl font-extrabold">Summary</h1>
     <div>
       <USelectMenu v-model="selected" :options="transactionsViewOptions" />
     </div>
@@ -113,12 +117,11 @@ const transactionsGroupedByDate = computed(() => {
     <div>
       <h2 class="text-2xl font-extrabold">Transactions</h2>
       <div class="text-gray-500 dark:text-gray-400 mt-4">
-        You have {{ incomeCount }} incomes and {{ expenseCount }} expenses this
-        today.
+        You have {{ incomeCount }} income and {{ expenseCount }} expense today.
       </div>
     </div>
     <div>
-      <TransactionModal v-model="isOpen" />
+      <TransactionModal v-model="isOpen" @saved="refreshTransactions()" />
       <UButton
         icon="i-heroicons-plus-circle"
         color="white"
@@ -137,14 +140,14 @@ const transactionsGroupedByDate = computed(() => {
     >
       <DailyTransactionSummary :date="date" :transactions="transactionsOnDay" />
       <Transaction
-        v-for="transaction in transactions"
-        :key="transaction"
+        v-for="transaction in transactionsOnDay"
+        :key="transaction.id"
         :transaction="transaction"
         @deleted="refreshTransactions()"
       />
     </div>
   </section>
   <section v-else>
-    <USkeleton class="h-8 w-full mb-2" v-for="i in 4" :key="i" />
+    <USkeleton class="h-8 w-full mb-2" v-for="i in 5" :key="i" />
   </section>
 </template>
