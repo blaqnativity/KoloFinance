@@ -64,12 +64,16 @@ const save = async () => {
       });
       isOpen.value = false;
       emit("saved");
+      return;
     }
+
+    throw error;
   } catch (e) {
     toast.add({
       title: "Transaction not saved",
       description: e.message,
       icon: "i-heroicons-exclamation-circle",
+      color: "red",
     });
   } finally {
     isLoading.value = false;
