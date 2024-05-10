@@ -1,5 +1,6 @@
 <script setup>
 import { transactionsViewOptions } from "~/constants";
+const supabase = useSupabaseClient();
 
 const selectedView = ref(transactionsViewOptions[0]);
 const isOpen = ref(false);

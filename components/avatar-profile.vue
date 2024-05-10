@@ -13,12 +13,12 @@ const items = [
     {
       label: "Settings",
       icon: "i-heroicons-cog-8-tooth",
-      onClick: () => console.log("Link to settings in the future"),
+      click: () => console.log("Link to settings in the future"),
     },
     {
       label: "Sign out",
       icon: "i-heroicons-arrow-left-on-rectangle",
-      onClick: async () => {
+      click: async () => {
         try {
           const { error } = await supabase.auth.signOut();
           if (!error) {
@@ -54,7 +54,7 @@ const items = [
     </template>
 
     <template #item="{ item }">
-      <span class="truncate">{{ item.label }}</span>
+      <span class="truncate w-24">{{ item.label }}</span>
 
       <UIcon
         :name="item.icon"
