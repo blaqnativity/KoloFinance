@@ -4,7 +4,7 @@
 
 // const supabase = createClient(
 //   process.env.SUPABASE_URL,
-//   process.env.SUPABASE_KEY,
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzam1tYWF4cmRqb2NibGRpanJsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNTE1MTc4MywiZXhwIjoyMDMwNzI3NzgzfQ.QoEhJgh363vPHkm4wuPz7E1u7E9xF4tE77SPbkr8EWM",
 //   {
 //     auth: { persistSession: false },
 //   }
