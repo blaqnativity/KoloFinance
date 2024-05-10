@@ -39,7 +39,7 @@ const handleLogin = async () => {
 
 <template>
   <UCard v-if="!success">
-    <template #header> Sign-in to Finance Tracker </template>
+    <template #header> Sign-in to your Account </template>
 
     <form @submit.prevent="handleLogin">
       <UFormGroup
