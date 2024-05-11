@@ -8,8 +8,8 @@ const pending = ref(false);
 
 // state management
 const state = ref({
-  name: user.value.user_metadata?.full_name,
-  email: user.value.email,
+  name: user.value?.user_metadata?.full_name || "",
+  email: user.value?.email || "",
 });
 
 const schema = z.object({
@@ -21,6 +21,17 @@ const schema = z.object({
 const saveProfile = async () => {
   pending.value = true;
   try {
+    const data = {
+      data: {
+        full_name: state.value.name,
+      },
+    };
+
+    if (state.value.email !== user.value.email) {
+      data.email = state.value.email;
+    }
+    console.log(data);
+
     const { error } = await supabase.auth.updateUser({
       data: {
         full_name: state.value.name,
@@ -62,7 +73,8 @@ const saveProfile = async () => {
       color="black"
       variant="solid"
       label="Save"
-      :pending="pending"
+      :loading="pending"
+      :disable="pending"
     />
   </UForm>
 </template>

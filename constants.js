@@ -5,5 +5,7 @@ export const categories = [
   "Entertainment",
   "Internet",
   "Car",
+  "Transfer",
+  "Deposit",
 ];
 export const types = ["Income", "Expense", "Saving", "Investment"];
