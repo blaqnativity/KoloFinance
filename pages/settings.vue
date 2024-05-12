@@ -12,6 +12,10 @@ const links = [
     label: "View",
     to: "/settings/views",
   },
+  {
+    label: "Add Accounts",
+    to: "/settings/accounts",
+  },
 ];
 </script>
 
