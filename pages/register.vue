@@ -1,6 +1,6 @@
 <script setup>
 const success = ref(false);
-const redirectUrl = useRuntimeConfig();
+const redirectUrl = useRuntimeConfig().public.baseUrl;
 const email = ref("");
 const password = ref("");
 const pending = ref(false);
