@@ -8,7 +8,7 @@ const pending = ref(false);
 <template>
   <UForm @submit="saveSettings">
     <UFormGroup
-      label="Transaction View"
+      label="Your Bank"
       class="mb-4"
       help="Choose as many banks as possible"
     >
