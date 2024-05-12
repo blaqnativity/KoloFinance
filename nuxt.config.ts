@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     apiSecret: "123",
     // Keys within public, will be also exposed to the client-side
     public: {
-      baseUrl: process.env.BASE_URL ?? "http:antimi.vercel.app",
+      baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
     },
   },
 });
