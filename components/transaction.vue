@@ -7,7 +7,7 @@ const props = defineProps({
   transaction: Object,
 });
 
-const emit = defineEmits(["deleted"]);
+const emit = defineEmits(["deleted", "edited"]);
 const isIncome = computed(() => props.transaction.type === "Income");
 const icon = computed(() =>
   isIncome.value ? "i-heroicons-arrow-up-right" : "i-heroicons-arrow-down-left"
@@ -18,6 +18,8 @@ const IconColor = computed(() =>
 );
 
 const { currency } = useCurrency(props.transaction.amount);
+
+const isOpen = ref(false);
 
 const deleteTransaction = async () => {
   isLoading.value = true;
@@ -44,7 +46,7 @@ const items = [
     {
       label: "Edit",
       icon: "i-heroicons-pencil-square",
-      click: () => console.log("Edit"),
+      click: () => (isOpen.value = true),
     },
     {
       label: "Delete",
@@ -78,6 +80,11 @@ const items = [
           mode="click"
           :popper="{ placement: 'bottom-start' }"
         >
+          <TransactionModal
+            v-model="isOpen"
+            :transaction="transaction"
+            @saved="emit('edited')"
+          />
           <UButton
             color="white"
             variant="ghost"

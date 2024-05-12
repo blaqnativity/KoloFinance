@@ -44,7 +44,13 @@ const { toastError, toastSuccess } = useAppToast();
 
 const props = defineProps({
   modelValue: Boolean,
+  transaction: {
+    type: Object,
+    required: false,
+  },
 });
+
+const isEditig = computed(() => !!props.transaction);
 const emit = defineEmits(["update:modelValue", "saved"]);
 
 const save = async () => {
@@ -53,9 +59,10 @@ const save = async () => {
   isLoading.value = true;
 
   try {
-    const { error } = await supabase
-      .from("transactions")
-      .upsert({ ...state.value });
+    const { error } = await supabase.from("transactions").upsert({
+      ...state.value,
+      id: props.transaction?.id,
+    });
 
     if (!error) {
       toastSuccess({
@@ -85,7 +92,17 @@ const initialState = {
   category: undefined,
 };
 
-const state = ref({ ...initialState });
+const state = ref(
+  isEditig.value
+    ? {
+        type: props.transaction.type,
+        amount: props.transaction.amount,
+        created_at: props.transaction.created_at.split("T")[0],
+        description: props.transaction.description,
+        category: props.transaction.category,
+      }
+    : { ...initialState }
+);
 
 const resetForm = () => {
   Object.assign(state.value, initialState);
@@ -104,7 +121,7 @@ const isOpen = computed({
 <template>
   <UModal v-model="isOpen">
     <UCard>
-      <template #header> Add Transaction </template>
+      <template #header> {{ isEditig ? "Edit" : "Add" }} </template>
 
       <UForm
         class="space-y-4"
@@ -118,6 +135,7 @@ const isOpen = computed({
             :options="types"
             placeholder="Select the transaction type"
             v-model="state.type"
+            :disabled="isEditig"
           />
         </UFormGroup>
 

@@ -1,5 +1,6 @@
 <script setup>
 const user = useSupabaseUser();
+const { url } = useAvatarUrl();
 const supabase = useSupabaseClient();
 const items = [
   [
@@ -38,10 +39,7 @@ const items = [
     :items="items"
     :ui="{ item: { disabled: 'cursor-text select-text' }, width: 'w-64' }"
   >
-    <UAvatar
-      src="https://avatars.githubusercontent.com/u/739984?v=4"
-      alt="Avatar"
-    />
+    <UAvatar :src="url" alt="Avatar" />
 
     <template #account="{ item }">
       <div class="text-left">
