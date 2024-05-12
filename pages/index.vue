@@ -1,6 +1,7 @@
 <script setup>
 import { transactionsViewOptions } from "~/constants";
 const user = useSupabaseUser();
+const supabase = useSupabaseClient();
 
 const selectedView = ref(
   user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
@@ -50,6 +51,7 @@ await refreshPrevious();
       :last-amount="prevIncomeTotal"
       :loading="pending"
     />
+
     <Trend
       color="red"
       title="Expenses"
@@ -57,6 +59,7 @@ await refreshPrevious();
       :last-amount="prevExpenseTotal"
       :loading="pending"
     />
+
     <Trend
       color="green"
       title="Investments"
@@ -64,6 +67,7 @@ await refreshPrevious();
       :last-amount="3000"
       :loading="pending"
     />
+
     <Trend
       color="red"
       title="Savings"

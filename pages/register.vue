@@ -13,24 +13,21 @@ const handleLogin = async () => {
   pending.value = true;
 
   try {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value,
       options: {
-        emailRedirectTo: "http://localhost:3000",
+        emailRedirectTo: "http://localhost:3000/confirm",
       },
     });
     if (error) {
       toastError({
         title: "Error authenticating",
-        description: error.message,
       });
     } else {
       success.value = true;
       toastSuccess({
         title: "Login successful",
-        icon: "i-heroicons-check-circle",
-        color: "green",
       });
     }
   } finally {
@@ -42,8 +39,10 @@ const handleLogin = async () => {
 <template>
   <UCard v-if="!success">
     <template #header>
-      <h2 class="text-xl font-bold text-blue-600">Sign-in to your Account</h2>
-    </template>
+      <h2 class="text-xl font-bold text-blue-600">
+        Create an account to get started
+      </h2></template
+    >
 
     <form @submit.prevent="handleLogin" class="mb-4">
       <UFormGroup
@@ -76,11 +75,26 @@ const handleLogin = async () => {
         color="blue"
         :loading="pending"
         :disabled="pending"
-        >Sign-in</UButton
-      >
+        label="Create Account"
+      ></UButton>
     </form>
     <span>
-      Don't have an account yet? <NuxtLink to="/register">Create one</NuxtLink>
+      Already have an account? <NuxtLink to="/login">Login</NuxtLink>
     </span>
+  </UCard>
+
+  <UCard v-else>
+    <template #header> Email has been sent </template>
+    <div class="text-center">
+      <p class="mb-4">
+        We have sent an email to
+        <strong class="text-green-500">{{ email }}</strong> with a link to sign
+        in
+      </p>
+      <p>
+        <strong class="text-red-500">Important:</strong> The link will expire in
+        5 mins
+      </p>
+    </div>
   </UCard>
 </template>
