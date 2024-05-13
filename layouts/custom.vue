@@ -19,13 +19,13 @@ useHead({
     <div class="container max-w-5xl mx-auto flex justify-between items-center">
       <NuxtLink
         ><span class="text-3xl font-extrabold text-blue-600"
-          >Antimi</span
+          >Antimii</span
         ></NuxtLink
       >
 
       <div class="flex justify-between items-center space-x-10">
         <!-- Adjusted spacing class here -->
-        <div>
+        <div class="space-x-6">
           <NuxtLink>About us</NuxtLink>
           <NuxtLink>Contact</NuxtLink>
         </div>
@@ -35,7 +35,7 @@ useHead({
     </div>
   </header>
 
-  <div class="container mx-auto max-w-5xl mt-4">
+  <div class="container mx-auto max-w-5xl mt-10">
     <!-- Adjusted spacing class here -->
     <slot />
   </div>

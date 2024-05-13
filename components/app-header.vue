@@ -5,7 +5,7 @@ const user = useSupabaseUser();
 <template>
   <header class="flex justify-between items-center mt-10 text-center">
     <NuxtLink to="/" class="text-2xl font-extrabold text-blue-600"
-      >Antimi</NuxtLink
+      >Antimii</NuxtLink
     >
 
     <div v-if="user">

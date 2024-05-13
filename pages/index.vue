@@ -9,15 +9,15 @@ definePageMeta({
     <div class="flex justify-between items-center space-x-10">
       <!-- left item -->
       <div class="space-y-4">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-600">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gray-600">
           Welcome to Antimii - Simplifying Your Financial Life
         </h1>
-        <p>
-          Say goodbye to logging into multiple banking apps – with Antimii,
+        <p class="font-bold text-blue-600">
+          Say goodbye to logging into multiple banking apps with Antimii,
           everything you need is in one place.
         </p>
 
-        <!-- <UButton label="Get Started" /> -->
+        <UButton label="Get Started" color="blue" size="lg" to="/register" />
       </div>
 
       <!-- right item -->
