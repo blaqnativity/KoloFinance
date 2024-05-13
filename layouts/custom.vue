@@ -15,7 +15,7 @@ useHead({
 </script>
 
 <template>
-  <header class="sticky top-0 w-full h-20 grid">
+  <header class="sticky top-0 w-full h-20 grid bg-white">
     <div class="container max-w-5xl mx-auto flex justify-between items-center">
       <NuxtLink
         ><span class="text-3xl font-extrabold text-blue-600"
