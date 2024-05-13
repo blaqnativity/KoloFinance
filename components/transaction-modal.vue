@@ -178,7 +178,7 @@ const isOpen = computed({
 
         <UButton
           type="submit"
-          color="black"
+          color="blue"
           variant="solid"
           :loading="isLoading"
           label="save"

@@ -47,13 +47,7 @@ const handleLogin = async () => {
     </template>
 
     <form @submit.prevent="handleLogin" class="mb-4">
-      <UFormGroup
-        label="Email"
-        name="email"
-        class="mb-4"
-        :required="true"
-        help="You will receive a confirmation link once your account is created"
-      >
+      <UFormGroup label="Email" name="email" class="mb-4" :required="true">
         <UInput type="email" placeholder="Email" required v-model="email" />
       </UFormGroup>
 
