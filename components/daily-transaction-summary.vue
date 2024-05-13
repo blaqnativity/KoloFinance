@@ -27,6 +27,8 @@ const { currency } = useCurrency(sum);
     <div class="flex items-center justify-between">
       {{ date }}
     </div>
-    <div class="flex items-center justify-end">{{ currency }}</div>
+    <div class="flex items-center justify-end">
+      {{ currency }}
+    </div>
   </div>
 </template>

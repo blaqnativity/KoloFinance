@@ -71,6 +71,9 @@ const items = [
           transaction.category
         }}</UBadge>
       </div>
+      <div>
+        <UBadge color="white">Wema Bank</UBadge>
+      </div>
     </div>
     <div class="flex items-center justify-end space-x-2">
       <div>{{ currency }}</div>
