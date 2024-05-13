@@ -63,7 +63,7 @@ await refreshPrevious();
     <Trend
       color="green"
       title="Pending"
-      :amount="4000"
+      :amount="0.0"
       :last-amount="3000"
       :loading="pending"
     />
@@ -71,7 +71,7 @@ await refreshPrevious();
     <Trend
       color="red"
       title="Reversed"
-      :amount="4000"
+      :amount="0.0"
       :last-amount="4100"
       :loading="pending"
     />
