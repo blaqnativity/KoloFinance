@@ -10,7 +10,13 @@ definePageMeta({
       class="grid grid-cols-1 md:grid-cols-2 justify-between items-center gap-4"
     >
       <!-- left item -->
-      <div class="space-y-8">
+      <div class="space-y-4">
+        <span
+          class="bg-blue-100 px-4 py-2 font-normal items-center flex w-fit gap-1 text-sm text-gray-500 rounded-full"
+        >
+          <UIcon name="i-heroicons-light-bulb" />
+          Giving your business a new face</span
+        >
         <h1
           class="text-3xl md:text-5xl font-extrabold text-black leading-10 tracking-wider"
         >

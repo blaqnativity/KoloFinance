@@ -4,7 +4,7 @@ const user = useSupabaseUser();
 
 <template>
   <header class="flex justify-between items-center mt-10 text-center">
-    <NuxtLink to="/" class="text-2xl font-extrabold text-black"
+    <NuxtLink to="/dashboard/" class="text-2xl font-extrabold text-black"
       >Antimii</NuxtLink
     >
 

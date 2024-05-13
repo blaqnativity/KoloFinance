@@ -16,9 +16,9 @@ useHead({
 
 <template>
   <!-- <Banner /> -->
-  <header class="sticky top-0 w-full h-20 grid bg-white">
+  <header class="sticky top-0 w-full h-20 grid bg-white px-6">
     <div class="container max-w-7xl mx-auto flex justify-between items-center">
-      <NuxtLink
+      <NuxtLink to="/"
         ><span class="text-3xl font-extrabold text-black"
           >Antimii</span
         ></NuxtLink
@@ -42,7 +42,7 @@ useHead({
     </div>
   </header>
 
-  <div class="container mx-auto max-w-7xl mt-10">
+  <div class="container mx-auto max-w-7xl mt-10 px-6">
     <!-- Adjusted spacing class here -->
     <slot />
   </div>
