@@ -8,7 +8,6 @@ export const categories = [
   "Transfer",
   "Deposit",
 ];
-export const types = ["Income", "Expense", "Saving", "Investment"];
 
 export const banksOptions = [
   "Access Bank",

@@ -1,7 +1,6 @@
 <script setup>
 import { categories } from "~/constants";
 import { banksOptions } from "~/constants";
-import { types } from "~/constants";
 import { z } from "zod";
 
 const defaultSchema = z.object({
@@ -122,7 +121,11 @@ const isOpen = computed({
 <template>
   <UModal v-model="isOpen">
     <UCard>
-      <template #header> {{ isEditig ? "Edit" : "Add" }} </template>
+      <template #header>
+        <span class="bg-blue-100 px-4 py-1 text-gray-500 rounded-full">
+          {{ isEditig ? "Edit Transaction" : "Add Transaction" }}</span
+        >
+      </template>
 
       <UForm
         class="space-y-4"
@@ -131,16 +134,15 @@ const isOpen = computed({
         ref="form"
         @submit="save"
       >
-        <UFormGroup :required="true" label="Transaction Type" name="type">
-          <USelect
-            :options="types"
-            placeholder="Select the transaction type"
-            v-model="state.type"
-            :disabled="isEditig"
-          />
+        <UFormGroup
+          :required="true"
+          label="Document Type"
+          help="Document must be in excel format"
+        >
+          <UInput type="file" size="sm" icon="i-heroicons-folder" />
         </UFormGroup>
 
-        <UFormGroup :required="true" label="Select Bank" name="type">
+        <UFormGroup :required="true" label="Select Bank">
           <USelect
             :options="banksOptions"
             placeholder="Select the Bank"

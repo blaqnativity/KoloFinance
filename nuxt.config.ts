@@ -15,4 +15,8 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
+
+  // head: {
+  //   title: "Antimi",
+  // },
 });
