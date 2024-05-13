@@ -71,7 +71,7 @@ const items = [
           transaction.category
         }}</UBadge>
       </div>
-      <div>
+      <div class="hidden md:block">
         <UBadge color="white">Wema Bank</UBadge>
       </div>
     </div>

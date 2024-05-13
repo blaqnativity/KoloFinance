@@ -5,9 +5,8 @@ const user = useSupabaseUser();
 const selectedView = ref(
   user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
 );
-const bank =
-  ref();
-  // user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
+const bank = ref();
+// user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
 const isOpen = ref(false);
 
 const { current, previous } = useSelectedTimePeriod(selectedView);
