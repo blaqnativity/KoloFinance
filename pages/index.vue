@@ -1,11 +1,13 @@
 <script setup>
-import { transactionsViewOptions } from "~/constants";
+import { transactionsViewOptions, banksOptions } from "~/constants";
 const user = useSupabaseUser();
-const supabase = useSupabaseClient();
 
 const selectedView = ref(
   user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
 );
+const bank =
+  ref();
+  // user.value.user_metadata?.transaction_view ?? transactionsViewOptions[1]
 const isOpen = ref(false);
 
 const { current, previous } = useSelectedTimePeriod(selectedView);
@@ -38,6 +40,9 @@ await refreshPrevious();
     <h1 class="text-3xl font-extrabold">Summary</h1>
     <div>
       <USelectMenu v-model="selectedView" :options="transactionsViewOptions" />
+    </div>
+    <div>
+      <USelectMenu v-model="bank" :options="banksOptions" />
     </div>
   </section>
 
