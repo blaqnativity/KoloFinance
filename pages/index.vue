@@ -8,16 +8,23 @@ definePageMeta({
   <section class="mb-10">
     <div class="flex justify-between items-center space-x-10">
       <!-- left item -->
-      <div class="space-y-4">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-gray-600">
-          Welcome to Antimii - Simplifying Your Financial Life
+      <div class="space-y-8">
+        <h1
+          class="text-3xl md:text-5xl font-extrabold text-blue-950 leading-10 tracking-wider"
+        >
+          Antimii - Simplifying Your Financial Life
         </h1>
-        <p class="font-bold text-blue-600">
+        <p class="font-bold text-gray-600 leading-6 tracking-wide">
           Say goodbye to logging into multiple banking apps with Antimii,
           everything you need is in one place.
         </p>
 
-        <UButton label="Get Started" color="blue" size="lg" to="/register" />
+        <UButton
+          label="Go to Dashboard"
+          color="blue"
+          size="lg"
+          to="/register"
+        />
       </div>
 
       <!-- right item -->

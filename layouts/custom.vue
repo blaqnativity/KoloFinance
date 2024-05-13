@@ -15,10 +15,11 @@ useHead({
 </script>
 
 <template>
+  <Banner />
   <header class="sticky top-0 w-full h-20 grid bg-white">
-    <div class="container max-w-5xl mx-auto flex justify-between items-center">
+    <div class="container max-w-7xl mx-auto flex justify-between items-center">
       <NuxtLink
-        ><span class="text-3xl font-extrabold text-blue-600"
+        ><span class="text-3xl font-extrabold text-blue-950"
           >Antimii</span
         ></NuxtLink
       >
@@ -30,12 +31,18 @@ useHead({
           <NuxtLink>Contact</NuxtLink>
         </div>
 
-        <UButton label="Login" color="blue" variant="solid" to="/login" />
+        <UButton
+          label="Sign in"
+          color="blue"
+          variant="solid"
+          size="lg"
+          to="/login"
+        />
       </div>
     </div>
   </header>
 
-  <div class="container mx-auto max-w-5xl mt-10">
+  <div class="container mx-auto max-w-7xl mt-10">
     <!-- Adjusted spacing class here -->
     <slot />
   </div>
