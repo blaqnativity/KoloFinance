@@ -43,7 +43,7 @@ const handleLogin = async () => {
 <template>
   <UCard v-if="!success">
     <template #header>
-      <h2 class="text-xl font-bold text-blue-600">Sign-in to your Account</h2>
+      <h2 class="text-xl font-bold text-black">Sign-in to your Account</h2>
     </template>
 
     <form @submit.prevent="handleLogin" class="mb-4">
@@ -68,7 +68,7 @@ const handleLogin = async () => {
       <UButton
         type="submit"
         variant="solid"
-        color="blue"
+        color="black"
         :loading="pending"
         :disabled="pending"
         >Sign-in</UButton

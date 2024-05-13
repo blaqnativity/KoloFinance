@@ -39,7 +39,7 @@ const handleLogin = async () => {
 <template>
   <UCard v-if="!success">
     <template #header>
-      <h2 class="text-xl font-bold text-blue-600">
+      <h2 class="text-xl font-bold text-black">
         Create an account to get started
       </h2></template
     >
@@ -72,7 +72,7 @@ const handleLogin = async () => {
       <UButton
         type="submit"
         variant="solid"
-        color="blue"
+        color="black"
         :loading="pending"
         :disabled="pending"
         label="Create Account"
