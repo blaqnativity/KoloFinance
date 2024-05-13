@@ -1,5 +1,6 @@
 <script setup>
 import { categories } from "~/constants";
+import { banksOptions } from "~/constants";
 import { types } from "~/constants";
 import { z } from "zod";
 
@@ -135,6 +136,15 @@ const isOpen = computed({
             :options="types"
             placeholder="Select the transaction type"
             v-model="state.type"
+            :disabled="isEditig"
+          />
+        </UFormGroup>
+
+        <UFormGroup :required="true" label="Select Bank" name="type">
+          <USelect
+            :options="banksOptions"
+            placeholder="Select the Bank"
+            v-model="state.banksOptions"
             :disabled="isEditig"
           />
         </UFormGroup>
