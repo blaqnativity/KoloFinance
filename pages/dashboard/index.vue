@@ -44,7 +44,7 @@ await refreshPrevious();
       <USelectMenu
         v-model="bank"
         :options="banksOptions"
-        placeholder="Filter by Bank"
+        placeholder="Banks synced"
       />
     </div>
   </section>

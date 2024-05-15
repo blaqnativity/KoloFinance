@@ -1,0 +1,16 @@
+/* assets/css/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-select,
+  .custom-input {
+    @apply border-primary focus:border-outlinePrimary focus:ring-outlinePrimary;
+  }
+
+  .custom-select-secondary,
+  .custom-input-secondary {
+    @apply border-secondary focus:border-secondary focus:ring-secondary;
+  }
+}
