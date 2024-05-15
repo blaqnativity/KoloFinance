@@ -32,10 +32,6 @@ const {
   },
 } = useFetchTransactions(previous);
 await refreshPrevious();
-
-definePageMeta({
-  middleware: "auth",
-});
 </script>
 
 <template>
