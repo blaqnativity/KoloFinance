@@ -32,6 +32,10 @@ const {
   },
 } = useFetchTransactions(previous);
 await refreshPrevious();
+
+definePageMeta({
+  middleware: "auth",
+});
 </script>
 
 <template>
@@ -41,7 +45,11 @@ await refreshPrevious();
       <USelectMenu v-model="selectedView" :options="transactionsViewOptions" />
     </div>
     <div>
-      <USelectMenu v-model="bank" :options="banksOptions" />
+      <USelectMenu
+        v-model="bank"
+        :options="banksOptions"
+        placeholder="Select one bank option"
+      />
     </div>
   </section>
 
@@ -50,7 +58,7 @@ await refreshPrevious();
   >
     <Trend
       color="green"
-      title="Income"
+      title="Total Credit"
       :amount="incomeTotal"
       :last-amount="prevIncomeTotal"
       :loading="pending"
@@ -58,7 +66,7 @@ await refreshPrevious();
 
     <Trend
       color="red"
-      title="Expenses"
+      title="Total Debit"
       :amount="expenseTotal"
       :last-amount="prevExpenseTotal"
       :loading="pending"
@@ -66,7 +74,7 @@ await refreshPrevious();
 
     <Trend
       color="red"
-      title="Pending"
+      title="Credit Count"
       :amount="0.0"
       :last-amount="3000"
       :loading="pending"
@@ -74,7 +82,7 @@ await refreshPrevious();
 
     <Trend
       color="green"
-      title="Reversed"
+      title="Debit Count"
       :amount="0.0"
       :last-amount="4100"
       :loading="pending"

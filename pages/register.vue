@@ -1,12 +1,12 @@
 <script setup>
 const success = ref(false);
-const redirectUrl = useRuntimeConfig().public.baseUrl;
 const email = ref("");
 const password = ref("");
 const pending = ref(false);
 const { toastError, toastSuccess } = useAppToast();
 const supabase = useSupabaseClient();
 
+const redirectUrl = useRuntimeConfig().public.baseUrl;
 useRedirectIfAuth();
 
 const handleLogin = async () => {

@@ -1,6 +1,5 @@
 <script setup>
-import { categories } from "~/constants";
-import { banksOptions } from "~/constants";
+import { banksOptions, types, categories } from "~/constants";
 import { z } from "zod";
 
 const defaultSchema = z.object({
@@ -139,7 +138,11 @@ const isOpen = computed({
           label="Document Type"
           help="Document must be in excel format"
         >
-          <UInput type="file" size="sm" icon="i-heroicons-folder" />
+          <UInput type="file" size="sm" icon="i-heroicons-document" trailing />
+        </UFormGroup>
+
+        <UFormGroup :required="true" label="Transaction Type">
+          <USelect :options="types" placeholder="Select transaction type" />
         </UFormGroup>
 
         <UFormGroup :required="true" label="Select Bank">

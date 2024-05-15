@@ -2,6 +2,8 @@
 definePageMeta({
   layout: "custom",
 });
+
+const q = ref("");
 </script>
 
 <template>
@@ -39,6 +41,14 @@ definePageMeta({
       <div>
         <img src="/assets/img/transaction.jpg" alt="" class="rounded-md" />
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h2 class="text-3xl md:text-5xl font-medium">
+        Essential Tools for Your Business
+      </h2>
     </div>
   </section>
 </template>

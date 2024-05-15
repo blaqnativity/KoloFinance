@@ -32,7 +32,7 @@ useHead({
         </div>
 
         <UButton
-          label="Sign in"
+          label="Get Started"
           color="black"
           variant="solid"
           size="lg"
