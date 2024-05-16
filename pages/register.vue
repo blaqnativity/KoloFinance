@@ -9,7 +9,7 @@ const supabase = useSupabaseClient();
 const redirectUrl = useRuntimeConfig().public.baseUrl;
 useRedirectIfAuth();
 
-const handleLogin = async () => {
+const handleSignup = async () => {
   pending.value = true;
 
   try {
@@ -17,7 +17,7 @@ const handleLogin = async () => {
       email: email.value,
       password: password.value,
       options: {
-        emailRedirectTo: `${redirectUrl}/confirm`,
+        emailRedirectTo: `${redirectUrl}`,
       },
     });
     if (error) {
@@ -44,7 +44,7 @@ const handleLogin = async () => {
       </h2></template
     >
 
-    <form @submit.prevent="handleLogin" class="mb-4">
+    <form @submit.prevent="handleSignup" class="mb-4">
       <UFormGroup
         label="Email"
         name="email"
