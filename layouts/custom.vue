@@ -12,6 +12,14 @@ useHead({
     },
   ],
 });
+
+const isOpen = ref(false);
+
+const links = [
+  {
+    label: "About Us",
+  },
+];
 </script>
 
 <template>
@@ -24,20 +32,18 @@ useHead({
         ></NuxtLink
       >
 
-      <div class="flex justify-between items-center space-x-10">
-        <!-- Adjusted spacing class here -->
-        <div class="space-x-6 font-medium text-gray-500 text-md">
-          <NuxtLink>About us</NuxtLink>
-          <NuxtLink>Services</NuxtLink>
-        </div>
-
+      <div class="px-10">
         <UButton
-          label="Get Started"
-          color="black"
-          variant="solid"
-          size="lg"
-          to="/login"
-        />
+          icon="i-heroicons-bars-3-center-left"
+          @click="isOpen = true"
+          color="white"
+        >
+          <USlideover v-model="isOpen">
+            <div class="mt-10 flex flex-col space-y-6">
+              <UVerticalNavigation :links="links" />
+            </div>
+          </USlideover>
+        </UButton>
       </div>
     </div>
   </header>
