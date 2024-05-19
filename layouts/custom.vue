@@ -18,6 +18,13 @@ const isOpen = ref(false);
 const links = [
   {
     label: "About Us",
+    icon: "i-heroicons-information-circle",
+    to: navigateTo("/"),
+  },
+  {
+    label: "Contact Support",
+    icon: "i-heroicons-chat-bubble-left",
+    to: navigateTo("/"),
   },
 ];
 </script>
@@ -41,6 +48,7 @@ const links = [
           <USlideover v-model="isOpen">
             <div class="mt-10 flex flex-col space-y-6">
               <UVerticalNavigation :links="links" />
+              <UButton class="w-fit ml-4" label="Sign in" />
             </div>
           </USlideover>
         </UButton>
