@@ -15,16 +15,18 @@ useHead({
 
 const isOpen = ref(false);
 
+const route = useRoute();
+
 const links = [
   {
     label: "About Us",
     icon: "i-heroicons-information-circle",
-    to: navigateTo("/"),
+    to: "/about",
   },
   {
-    label: "Contact Support",
+    label: "Book a Demo",
     icon: "i-heroicons-chat-bubble-left",
-    to: navigateTo("/"),
+    to: "/support",
   },
 ];
 </script>
