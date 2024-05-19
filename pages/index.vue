@@ -31,7 +31,7 @@ const items = [
 </script>
 
 <template>
-  <section class="mb-40">
+  <section class="mb-20 md:mb-40">
     <div
       class="flex flex-col text-center justify-center items-center max-w-3xl mx-auto space-y-6"
     >
@@ -61,7 +61,7 @@ const items = [
     </div>
   </section>
 
-  <section class="mb-40">
+  <section class="mb-20 md:mb-40">
     <div
       class="flex flex-col text-center justify-center items-center mx-auto space-y-6"
     >
@@ -109,7 +109,7 @@ const items = [
     </div>
   </section>
 
-  <section class="mb-40">
+  <section class="mb-20 md:mb-40">
     <div
       class="flex flex-col text-center justify-center items-center mx-auto space-y-6 max-w-3xl"
     >
