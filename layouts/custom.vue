@@ -15,8 +15,6 @@ useHead({
 
 const isOpen = ref(false);
 
-const route = useRoute();
-
 const links = [
   {
     label: "About Us",
@@ -41,7 +39,7 @@ const links = [
         ></NuxtLink
       >
 
-      <div class="px-10">
+      <div class="">
         <UButton
           icon="i-heroicons-bars-3-center-left"
           @click="isOpen = true"
@@ -50,7 +48,12 @@ const links = [
           <USlideover v-model="isOpen">
             <div class="mt-10 flex flex-col space-y-6">
               <UVerticalNavigation :links="links" />
-              <UButton class="w-fit ml-4" label="Sign in" />
+              <UButton
+                class="w-fit ml-4"
+                label="Sign in"
+                color="black"
+                to="/login.vue"
+              />
             </div>
           </USlideover>
         </UButton>
