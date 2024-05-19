@@ -1,13 +1,12 @@
 export const transactionsViewOptions = ["Yearly", "Monthly", "Daily"];
 export const types = ["Credit", "Debit"];
 export const categories = [
-  "Food",
-  "Housing",
+  "Grocery",
+  "Household",
   "Entertainment",
   "Internet",
   "Car",
-  "Transfer",
-  "Deposit",
+  "Electricity",
 ];
 
 export const banksOptions = [

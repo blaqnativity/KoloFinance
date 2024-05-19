@@ -8,100 +8,20 @@ const defaultSchema = z.object({
   amount: z.number().positive("Amount needs to be more than 0"),
 });
 
-const incomeSchema = z.object({
-  type: z.literal("Income"),
-});
-
-const expenseSchema = z.object({
-  type: z.literal("Expense"),
-  category: z.enum(categories),
-});
-
-const investSchema = z.object({
-  type: z.literal("Investment"),
-});
-
-const savingsSchema = z.object({
-  type: z.literal("Savings"),
-});
-
-const schema = z.intersection(
-  z.discriminatedUnion("type", [
-    incomeSchema,
-    expenseSchema,
-    investSchema,
-    savingsSchema,
-  ]),
-
-  defaultSchema
-);
-
 const form = ref();
 const isLoading = ref(false);
 const supabase = useSupabaseClient();
 const { toastError, toastSuccess } = useAppToast();
 
-const props = defineProps({
-  modelValue: Boolean,
-  transaction: {
-    type: Object,
-    required: false,
-  },
-});
-
-const isEditig = computed(() => !!props.transaction);
-const emit = defineEmits(["update:modelValue", "saved"]);
-
-const save = async () => {
-  if (form.value.errors.length) return;
-
-  isLoading.value = true;
-
-  try {
-    const { error } = await supabase.from("transactions").upsert({
-      ...state.value,
-      id: props.transaction?.id,
-    });
-
-    if (!error) {
-      toastSuccess({
-        title: "Transaction saved",
-      });
-      isOpen.value = false;
-      emit("saved");
-      return;
-    }
-
-    throw error;
-  } catch (e) {
-    toastError({
-      title: "Transaction not saved",
-      description: e.message,
-    });
-  } finally {
-    isLoading.value = false;
-  }
-};
-
-const initialState = {
-  type: undefined,
+const state = {
+  type: "Credit",
   amount: 0,
   created_at: undefined,
   description: undefined,
+  file: undefined,
+  banksOptions: undefined,
   category: undefined,
 };
-
-const state = ref(
-  isEditig.value
-    ? {
-        type: props.transaction.type,
-        amount: props.transaction.amount,
-        created_at: props.transaction.created_at.split("T")[0],
-        description: props.transaction.description,
-        category: props.transaction.category,
-      }
-    : { ...initialState }
-);
 
 const resetForm = () => {
   Object.assign(state.value, initialState);
@@ -121,84 +41,90 @@ const isOpen = computed({
   <UModal v-model="isOpen">
     <UCard>
       <template #header>
-        <span class="bg-blue-100 px-4 py-1 text-gray-500 rounded-full">
+        <span
+          class="bg-blue-100 px-4 font-semibold py-1 text-gray-500 rounded-full"
+        >
           {{ isEditig ? "Edit Transaction" : "Add Transaction" }}</span
         >
       </template>
 
-      <UForm
-        class="space-y-4"
-        :state="state"
-        :schema="schema"
-        ref="form"
-        @submit="save"
-      >
-        <UFormGroup
-          :required="true"
-          label="Document Type"
-          help="Document must be in excel format"
-        >
-          <UInput type="file" size="sm" icon="i-heroicons-document" trailing />
-        </UFormGroup>
+      <form @submit.prevent="save">
+        <UForm class="space-y-4" :state="state" :schema="schema" ref="form">
+          <UFormGroup
+            :required="true"
+            label="Document Type"
+            help="Document must be in excel csv format"
+          >
+            <UInput
+              type="file"
+              size="sm"
+              icon="i-heroicons-document"
+              trailing
+              v-model="state.file"
+            />
+          </UFormGroup>
 
-        <UFormGroup :required="true" label="Transaction Type">
-          <USelect :options="types" placeholder="Select transaction type" />
-        </UFormGroup>
+          <UFormGroup :required="true" label="Transaction Type">
+            <USelect
+              :options="types"
+              placeholder="Select transaction type"
+              v-model="state.type"
+            />
+          </UFormGroup>
 
-        <UFormGroup :required="true" label="Select Bank">
-          <USelect
-            :options="banksOptions"
-            placeholder="Select the Bank"
-            v-model="state.banksOptions"
-            :disabled="isEditig"
+          <UFormGroup :required="true" label="Select Bank">
+            <USelect
+              :options="banksOptions"
+              placeholder="Select the Bank"
+              v-model="state.banksOptions"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Amount" :required="true" name="amount">
+            <UInput
+              type="number"
+              placeholder="Amount"
+              v-model.number="state.amount"
+            />
+          </UFormGroup>
+
+          <UFormGroup
+            label="Transaction date"
+            :required="true"
+            name="created_at"
+          >
+            <UInput
+              type="date"
+              icon="i-heroicons-calendar-days-solid"
+              v-model="state.created_at"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Description" hint="Optional" name="description">
+            <UInput
+              type="text"
+              placeholder="Description"
+              v-model="state.description"
+            />
+          </UFormGroup>
+
+          <UFormGroup :required="true" label="Category" name="category">
+            <USelect
+              :options="categories"
+              placeholder="Select the transaction category"
+              v-model="state.category"
+            />
+          </UFormGroup>
+
+          <UButton
+            type="submit"
+            color="black"
+            variant="solid"
+            :loading="isLoading"
+            label="save"
           />
-        </UFormGroup>
-
-        <UFormGroup label="Amount" :required="true" name="amount">
-          <UInput
-            type="number"
-            placeholder="Amount"
-            v-model.number="state.amount"
-          />
-        </UFormGroup>
-
-        <UFormGroup label="Transaction date" :required="true" name="created_at">
-          <UInput
-            type="date"
-            icon="i-heroicons-calendar-days-solid"
-            v-model="state.created_at"
-          />
-        </UFormGroup>
-
-        <UFormGroup label="Description" hint="Optional" name="description">
-          <UInput
-            type="text"
-            placeholder="Description"
-            v-model="state.description"
-          />
-        </UFormGroup>
-
-        <UFormGroup
-          :required="true"
-          label="Category"
-          name="category"
-          v-if="state.type === 'Expense'"
-        >
-          <USelect
-            :options="categories"
-            placeholder="Select the transaction category"
-            v-model="state.category"
-          />
-        </UFormGroup>
-
-        <UButton
-          type="submit"
-          color="blue"
-          variant="solid"
-          :loading="isLoading"
-          label="save"
-        />
-      </UForm>
+        </UForm>
+      </form>
     </UCard>
   </UModal>
 </template>

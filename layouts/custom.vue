@@ -42,7 +42,7 @@ useHead({
     </div>
   </header>
 
-  <div class="container mx-auto max-w-7xl mt-10 px-6">
+  <div class="container mx-auto max-w-7xl mt-10 md:mt-20 px-6">
     <!-- Adjusted spacing class here -->
     <slot />
   </div>
