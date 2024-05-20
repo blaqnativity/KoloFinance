@@ -9,14 +9,14 @@ const items = [
   ],
   [
     {
-      label: "Edit Avatar",
+      label: "Edit Profile",
       icon: "i-heroicons-user",
-      to: "/dashboard/",
+      to: "/dashboard/profile",
     },
     {
-      label: "Change Username",
-      icon: "i-heroicons-pencil-square",
-      to: "/dashboard/profile",
+      label: "Sign-out",
+      icon: "i-heroicons-arrow-arrow-left-on-rectangle",
+      // onClick: "/dashboard/profile",
     },
   ],
 ];
