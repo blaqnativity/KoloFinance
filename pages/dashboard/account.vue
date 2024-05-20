@@ -1,0 +1,1 @@
+<template>Accounts page</template>
