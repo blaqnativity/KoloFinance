@@ -7,7 +7,7 @@ import { types, transactionsViewOptions } from "~/constants";
     <h2 class="text-gray-500 text-sm font-medium">
       Select Dashboard Default Transactions View
     </h2>
-    <div class="space-y-4">
+    <form class="space-y-4" @submit.prevent>
       <UFormGroup label="Transactions type">
         <USelect :options="types" placeholder="Select category" class="w-fit" />
       </UFormGroup>
@@ -20,6 +20,6 @@ import { types, transactionsViewOptions } from "~/constants";
       </UFormGroup>
 
       <UButton label="Save" />
-    </div>
+    </form>
   </div>
 </template>

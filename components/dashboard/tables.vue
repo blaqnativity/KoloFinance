@@ -88,17 +88,21 @@ const filteredRows = computed(() => {
 
 const page = ref(1);
 const pageCount = 5;
+
+const rows = computed(() => {
+  return people.slice((page.value - 1) * pageCount, page.value * pageCount);
+});
 </script>
 
 <template>
   <div>
     <div class="flex justify-between items-start">
-      <UFormGroup help="Filter by name, date, etc...">
-        <UInput v-model="q" placeholder="Filter transaction..."
+      <UFormGroup>
+        <UInput v-model="q" placeholder="Find transaction..."
       /></UFormGroup>
-      <UFormGroup help="Easily upload your statement">
-        <UInput v-model="q" type="file"
-      /></UFormGroup>
+      <UFormGroup help="Upload CSV file">
+        <UInput type="file" />
+      </UFormGroup>
     </div>
     <div
       class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700"
