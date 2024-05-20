@@ -16,9 +16,9 @@ const transactions = [
   },
   {
     ID: 1,
-    type: "Credit",
-    Bank: "Opay",
-    Desc: "10,000 credit from Vashwan Mitchel",
+    type: "Debit",
+    Bank: "Moniepoint POS",
+    Desc: "10,000 debit from Moniepoint POS",
     Name: "Ojo John",
   },
 ];
@@ -30,7 +30,7 @@ const transactions = [
       <div><h2>Dashboard</h2></div>
       <div class="flex items-center gap-2">
         <p class="text-md font-medium text-gray-700">
-          Hello, <span class="text-lg font-semibold">Blaqnative</span>
+          Hello, <span class="text-lg font-semibold">Olukayode</span>
         </p>
         <UAvatar
           size="sm"
