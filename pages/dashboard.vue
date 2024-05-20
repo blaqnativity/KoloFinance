@@ -29,7 +29,7 @@ const links = [
 
 <template>
   <div class="grid grid-cols-9 gap-8 mx-auto max-w-7xl">
-    <UVerticalNavigation :links="links" class="col-span-2" />
+    <UVerticalNavigation :links="links" class="col-span-2 sticky top-0" />
     <div class="col-span-7">
       <NuxtPage />
     </div>

@@ -9,9 +9,9 @@ const items = [
   ],
   [
     {
-      label: "Edit Profile",
+      label: "Edit Avatar",
       icon: "i-heroicons-user",
-      to: "/dashboard/profile",
+      to: "/dashboard/",
     },
     {
       label: "Change Username",
