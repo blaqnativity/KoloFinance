@@ -8,13 +8,9 @@ const links = [
     icon: "i-heroicons-home",
     to: "/dashboard/",
   },
+
   {
-    label: "Profile",
-    icon: "i-heroicons-user",
-    to: "/dashboard/profile",
-  },
-  {
-    label: "Add Accounts",
+    label: "Banks Onboarding",
     icon: "i-heroicons-plus-circle",
     to: "/dashboard/account",
   },
@@ -32,9 +28,9 @@ const links = [
 </script>
 
 <template>
-  <div class="grid grid-cols-8 gap-8 mx-auto max-w-7xl">
+  <div class="grid grid-cols-9 gap-8 mx-auto max-w-7xl">
     <UVerticalNavigation :links="links" class="col-span-2" />
-    <div class="col-span-6">
+    <div class="col-span-7">
       <NuxtPage />
     </div>
   </div>

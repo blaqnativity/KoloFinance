@@ -1,1 +1,1 @@
-<template>profile page</template>
+<template>Edit Profile</template>

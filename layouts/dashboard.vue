@@ -15,7 +15,7 @@
 </script>
 
 <template>
-  <!-- <AppHeader /> -->
+  <AppHeader />
   <div class="mx-auto px-4">
     <main class="my-6">
       <slot />
