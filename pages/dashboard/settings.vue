@@ -5,13 +5,13 @@ import { types, transactionsViewOptions } from "~/constants";
 <template>
   <div class="space-y-4">
     <h2 class="text-gray-500 text-sm font-medium">
-      Select Dashboard Default Transactions View
+      Select dashboard default view
     </h2>
     <form class="space-y-4" @submit.prevent>
-      <UFormGroup label="Transactions type">
+      <UFormGroup label="Default category">
         <USelect :options="types" placeholder="Select category" class="w-fit" />
       </UFormGroup>
-      <UFormGroup label="Transactions view options">
+      <UFormGroup label="Default view category">
         <USelect
           :options="transactionsViewOptions"
           placeholder="Select default view"
