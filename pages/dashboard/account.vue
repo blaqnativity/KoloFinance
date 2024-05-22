@@ -22,6 +22,12 @@ const text = "Double check account number before saving";
         <UInput placeholder="Enter account number" class="w-fit" />
       </UFormGroup>
 
+      <UFormGroup label="Bank Verification Number" class="mb-4">
+        <UInput placeholder="Enter BVN" class="w-fit" />
+      </UFormGroup>
+
+      <UButton label="Generate OTP" class="block" />
+
       <UFormGroup label="OTP" class="mb-4">
         <UInput placeholder="Enter OTP code" class="w-fit" />
       </UFormGroup>
